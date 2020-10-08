@@ -8,6 +8,7 @@ Bienvenue dans ce modèle/template de projet React !
 - Build du projet
 - Utilitaires
 - Dépendances
+- Tests
 - Scripts
 - Prérequis
 
@@ -53,9 +54,9 @@ cd mon-challenge
 # note : des alertes sont affichées à propos de dossiers ignorés, c'est normal
 cp -n ../React-modele/{.*,*} .
 
-# copie (récursive) des dossiers src/, config/ et public/
+# copie (récursive) des dossiers src/, config/, public/ et tests/
 # note : des alertes sont affichées à propos de dossiers ignorés, c'est normal
-cp -rn ../React-modele/{src,config,public} .
+cp -rn ../React-modele/{src,config,public,tests} .
 
 # installation des dépendances listées dans le package.json
 yarn
@@ -205,6 +206,58 @@ Transpilation ES6/JSX -> ES5.
 
 ---
 
+Tests
+-----
+
+Lancement des tests avec `yarn test` :
+
+Parcourt le dossiers `tests/` et exécute tous les fichiers `?*.test.js`.
+
+```
+NODE_PATH=./ mocha --require tests/.setup.js tests/**/*.test.js
+```
+
+
+### [Mocha](https://mochajs.org/)
+
+Framework de test proposant des syntaxes pour structurer des série de tests : 
+
+- describe()
+- it()
+- skip()
+
+```sh
+yarn add --dev mocha
+```
+
+### [Chai](http://www.chaijs.com/)
+
+Librairie d'assertions proposant différentes syntaxes :
+
+- assert
+- should
+- expect
+
+```sh
+yarn add --dev chai
+```
+
+### [Enzyme](https://airbnb.io/enzyme/)
+
+Librairie de test pour les composants React offrant de _monter_ des composants React dans un DOM virtuel :
+
+- shallow
+- mount
+- render
+
+```sh
+yarn add --dev enzyme
+yarn add --dev enzyme-adapter-react-16
+yarn add --dev ignore-styles
+```
+
+---
+
 Scripts
 -------
 
@@ -222,6 +275,8 @@ npm run {script}
 - `lint:fix`: Tente de corriger certaines des erreurs dans le code.
 - `clean`: Supprime le dossier `dist/`.
 - `clean:all`: Supprime `dist/`, `node_modules/` et les fichiers `lock`.
+- `test`: Déclenche les tests sur le dossier `tests`.
+- `test:watch`: Redéclenche les tests à chaque modification.
 
 ---
 
